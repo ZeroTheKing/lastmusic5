@@ -20,7 +20,7 @@ const gif = require("gif-search");
 
 const client = new Discord.Client({disableEveryone: true});
 
-const prefix = "2";
+const prefix = "5";
 /////////////////////////
 ////////////////////////
 
@@ -102,7 +102,7 @@ client.on('message', async msg => {
 	if (command === `play`) {
 		const voiceChannel = msg.member.voiceChannel;
         
-        if (!voiceChannel) return msg.channel.send("انت لم تدخل روم صوتي");
+        if (!voiceChannel) return msg.channel.send(":thinking: انت لست في روم صوتي");
         
         const permissions = voiceChannel.permissionsFor(msg.client.user);
         
@@ -113,12 +113,12 @@ client.on('message', async msg => {
         
 		if (!permissions.has('SPEAK')) {
 
-			return msg.channel.send("انا لا يمكنني التكلم في هاذه الروم");
+			return msg.channel.send(":zipper_mouth: انا لا يمكنني التكلم في هاذه الروم");
 		}
 
 		if (!permissions.has('EMBED_LINKS')) {
 
-			return msg.channel.sendMessage("انا لا املك صلاحيات ارسال روابط")
+			return msg.channel.sendMessage(":lock: انا لا املك صلاحيات ارسال روابط")
 		}
 
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
@@ -162,7 +162,7 @@ client.on('message', async msg => {
 						});
 					} catch (err) {
 						console.error(err);
-						return msg.channel.send('لم يتم اختيار الاغنية');
+						return msg.channel.send(':musical_note: لم يتم اختيار الاغنية');
                     }
                     
 					const videoIndex = parseInt(response.first().content);
@@ -205,7 +205,7 @@ client.on('message', async msg => {
 		serverQueue.volume = args[1];
         serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
         
-        return msg.channel.send(`درجة الصوت الان**${args[1]}**`);
+        return msg.channel.send(`تم تغيير درجة الصوت الى**${args[1]}**`);
 
 	} else if (command === `np`) {
 
@@ -316,7 +316,7 @@ client.on('message', message => {
     if (message.content === 'help') {
         let helpEmbed = new Discord.RichEmbed()
         .setTitle('**أوامر الميوزك...**')
-        .setDescription('**برفكس البوت (!)**')
+        .setDescription('**برفكس البوت ()**')
         .addField('play', 'لتشغيل اغنية')
         .addField('join', 'دخول رومك الصوتي')
         .addField('disconnect', 'الخروج من رومك الصوتي')
@@ -344,12 +344,12 @@ client.on('message', message => {
 
 client.on('ready', () => {
    console.log(`----------------`);
-      console.log(`Desert Bot- Script By : EX Clan`);
+      console.log(`Desert Bot- Script By : One`);
         console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Script By : EX Clan ' `);
+      console.log(`ON ${client.guilds.size} Servers '     Script By : One ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`1play | Last Music`,"http://twitch.tv/Death Shop")
+client.user.setGame(`Last Community`,"http://twitch.tv/Death Shop")
 client.user.setStatus("dnd")
 });
 
