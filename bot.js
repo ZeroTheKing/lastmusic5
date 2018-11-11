@@ -353,4 +353,19 @@ client.user.setGame(`Last Community`,"http://twitch.tv/Death Shop")
 client.user.setStatus("dnd")
 });
 
+client.on('ready',async () => {
+console.log("Starting..");
+let g = client.guilds.get("494250830363623454");
+let c = g.channels.get("508382876698673153");
+if(c.type === 'voice') {
+c.join();
+setInterval(() => {
+if(!g.me.voiceChannel) c.join();
+}, 1);
+} else {
+console.log("Failed To Join:\n The Channel Type isn't \"text\"");
+}
+});
+
+
 client.login(process.env.BOT_TOKEN);
